@@ -27,9 +27,9 @@
             <mat-grid-tile>Name :{{schoolInfo.name}}</mat-grid-tile>
             <mat-grid-tile>Email Id: {{schoolInfo.email}}</mat-grid-tile>
             <mat-grid-tile> Address: {{schoolInfo.address}}</mat-grid-tile>
-            <mat-grid-tile>Phone Number: {{schoolDetails.phone}}</mat-grid-tile>
-            <mat-grid-tile>City: {{schoolDetails.city}}</mat-grid-tile>
-            <mat-grid-tile>State: {{schoolDetails.state}}</mat-grid-tile>
+            <mat-grid-tile>Phone Number: {{schoolInfo.phone}}</mat-grid-tile>
+            <mat-grid-tile>City: {{schoolInfo.city}}</mat-grid-tile>
+            <mat-grid-tile>State: {{schoolInfo.state}}</mat-grid-tile>
           </mat-grid-list>
     </mat-card-content>
 
@@ -37,7 +37,7 @@
   </mat-card>
  </div>
 </div>
-<button mat-button color="primary"  (click)="staffDetails(selected)">Staff Details</button>
+<button mat-button color="primary"  (click)="staffDetails(selected)">School Staff Details</button>
 <div *ngIf="showStaffs">
 <div *ngFor="let staffInfo of staffTestDetails">
 <div *ngIf="selected==staffInfo.sName">
@@ -54,7 +54,7 @@
 </div>
 
 <mat-form-field appearance="fill">
-    <mat-label>Student Details</mat-label>
+    <mat-label>Attendance</mat-label>
     <mat-select [(value)]="selected" [(ngModel)]="selected">
       <mat-option>None</mat-option>
       <mat-option *ngFor="let s of schoolList" [value]="s.name" >
@@ -64,7 +64,7 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>School Details</mat-label>
+    <mat-label>Student Details</mat-label>
     <mat-select [(value)]="selected" [(ngModel)]="selected">
       <mat-option>None</mat-option>
       <mat-option *ngFor="let s of schoolList" [value]="s.name" >

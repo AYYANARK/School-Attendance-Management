@@ -7,12 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Tour of Heroes';
+  title = 'OFFICER LOGIN';
   showStaffs;
-  schoolList = [{'id':'1','name':'s1','location':'Chennai'},{'id':'2','name':'s2','location':'RJPM'}];
-  schoolDetails =[{'name':'s1','address':'s1','city':'Chennai','state':'da','email':'ayyan'},
-  {'name':'s2','address':'s2','city':'RJPM','state':'TN','email':'ayyan1'}];
-  staffTestDetails=[{'sName':'s1','name':'A1','mail':'A1'},{'sName':'s1','name':'AC1','mail':'AC1'},{'sName':'s2','name':'A2','mail':'A2'}];
+  schoolList = [{'id':'1','name':'Government School','location':'Chennai'},{'id':'2','name':'Nellai School','location':'Tirunelveli'}];
+  schoolDetails =[{'name':'Government School','address':'2/48A,Main Street,Pallavakkam','city':'Chennai','state':'TamilNadu','email':'govschool@gmail.com','phone':'7550399789'},
+  {'name':'Nellai School','address':'8/48A,Periyar Street,Palladam','city':'Tirunelveli','state':'TamilNadu','email':'nellaischool@gmail.com','phone':'8939568978'}];
+  staffTestDetails=[{'sName':'Government School','name':'Sudha','email':'sudha@gov.ac.in'},{'sName':'Nellai School','name':'Varadhan','email':'vadhan@nellai.ac.in'},{'sName':'Government School','name':'Pooja','email':'pooja@gov.ac.in'}];
   selected;
 
   staffDetails(schoolName) {
