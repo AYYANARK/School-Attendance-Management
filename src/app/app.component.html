@@ -1,0 +1,81 @@
+<h1>{{title}}</h1>
+<mat-form-field appearance="fill">
+    <mat-label>Select an option</mat-label>
+    <mat-select [(value)]="selected" [(ngModel)]="selected">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let s of schoolList" [value]="s.name" >
+        {{s.name}} {{s.location}}
+        </mat-option>
+      
+    </mat-select>
+  </mat-form-field>
+
+ <p>Selected School name:{{selected}}</p>
+ <div *ngFor="let schoolInfo of schoolDetails">
+ <div *ngIf="selected==schoolInfo.name">
+ <mat-card class="example-card mat-elevation-z8">
+    <mat-card-header>
+      
+      <mat-card-title>School Details</mat-card-title>
+      
+    </mat-card-header>
+    
+    
+    <mat-card-content>
+        <mat-grid-list cols="3" rowHeight="2:1">
+            
+            <mat-grid-tile>Name :{{schoolInfo.name}}</mat-grid-tile>
+            <mat-grid-tile>Email Id: {{schoolInfo.email}}</mat-grid-tile>
+            <mat-grid-tile> Address: {{schoolInfo.address}}</mat-grid-tile>
+            <mat-grid-tile>Phone Number: {{schoolDetails.phone}}</mat-grid-tile>
+            <mat-grid-tile>City: {{schoolDetails.city}}</mat-grid-tile>
+            <mat-grid-tile>State: {{schoolDetails.state}}</mat-grid-tile>
+          </mat-grid-list>
+    </mat-card-content>
+
+    
+  </mat-card>
+ </div>
+</div>
+<button mat-button color="primary"  (click)="staffDetails(selected)">Staff Details</button>
+<div *ngIf="showStaffs">
+<div *ngFor="let staffInfo of staffTestDetails">
+<div *ngIf="selected==staffInfo.sName">
+
+        <mat-grid-list cols="3" rowHeight="2:1">
+            
+            <mat-grid-tile>Name :{{staffInfo.name}}</mat-grid-tile>
+            <mat-grid-tile>Email Id: {{staffInfo.email}}</mat-grid-tile>
+            
+          </mat-grid-list>
+    
+ </div>
+</div>
+</div>
+
+<mat-form-field appearance="fill">
+    <mat-label>Student Details</mat-label>
+    <mat-select [(value)]="selected" [(ngModel)]="selected">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let s of schoolList" [value]="s.name" >
+        {{s.name}} {{s.location}}
+        </mat-option>
+      
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>School Details</mat-label>
+    <mat-select [(value)]="selected" [(ngModel)]="selected">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let s of schoolList" [value]="s.name" >
+        {{s.name}} {{s.location}}
+        </mat-option>
+      
+    </mat-select>
+  </mat-form-field>
+  
+  
+  <!-- Copyright 2019 Google Inc. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
+  
