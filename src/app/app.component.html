@@ -1,9 +1,13 @@
+
+
+<body>
+
 <h1>{{title}}</h1>
-<mat-form-field appearance="fill">
-    <mat-label>Select an option</mat-label>
-    <mat-select [(value)]="selected" [(ngModel)]="selected">
+<mat-form-field style="margin-left: 50px;"class="drop" appearance="fill">
+    <mat-label >Select an option</mat-label>
+    <mat-select  [(value)]="selected" [(ngModel)]="selected">
       <mat-option>None</mat-option>
-      <mat-option *ngFor="let s of schoolList" [value]="s.name" >
+      <mat-option  class="drop-content"*ngFor="let s of schoolList" [value]="s.name" >
         {{s.name}} {{s.location}}
         </mat-option>
       
@@ -16,20 +20,26 @@
  <mat-card class="example-card mat-elevation-z8">
     <mat-card-header>
       
-      <mat-card-title>School Details</mat-card-title>
+      <mat-card-title class="details">School Details</mat-card-title>
       
     </mat-card-header>
     
     
-    <mat-card-content>
-        <mat-grid-list cols="3" rowHeight="2:1">
-            
-            <mat-grid-tile>Name :{{schoolInfo.name}}</mat-grid-tile>
-            <mat-grid-tile>Email Id: {{schoolInfo.email}}</mat-grid-tile>
-            <mat-grid-tile> Address: {{schoolInfo.address}}</mat-grid-tile>
-            <mat-grid-tile>Phone Number: {{schoolInfo.phone}}</mat-grid-tile>
-            <mat-grid-tile>City: {{schoolInfo.city}}</mat-grid-tile>
-            <mat-grid-tile>State: {{schoolInfo.state}}</mat-grid-tile>
+    <mat-card-content >
+        <mat-grid-list  cols="5" rowHeight="30px" [colspan]="1">
+            <b>
+            <mat-grid-tile [colspan]="4"  > {{schoolInfo.name}}</mat-grid-tile></b>
+            <mat-grid-tile style="font-style:italic;">Email:{{schoolInfo.email}}</mat-grid-tile>
+            <mat-grid-tile [colspan]="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{schoolInfo.address}}</mat-grid-tile>
+            <mat-grid-tile style="font-style:oblique;">Phone:{{schoolInfo.phone}}</mat-grid-tile>
+            <mat-grid-tile [colspan]="4" >&nbsp;{{schoolInfo.city}} , {{schoolInfo.state}}</mat-grid-tile>
+            <mat-grid-tile [colspan]="1"></mat-grid-tile>    
+            <b><mat-grid-tile [colspan]="1">&nbsp;&nbsp;Principal:{{schoolInfo.pname}}</mat-grid-tile></b>
+            <mat-grid-tile [colspan]="4"></mat-grid-tile> 
+            <mat-grid-tile [colspan]="1" style="font-style:italic;">{{schoolInfo.pgmail}}</mat-grid-tile>   
+            <mat-grid-tile [colspan]="4"></mat-grid-tile> 
+            <mat-grid-tile [colspan]="1" style="font-style:oblique;"> {{schoolInfo.pmobile}}</mat-grid-tile>
+           
           </mat-grid-list>
     </mat-card-content>
 
@@ -42,39 +52,39 @@
 <div *ngFor="let staffInfo of staffTestDetails">
 <div *ngIf="selected==staffInfo.sName">
 
-        <mat-grid-list cols="3" rowHeight="2:1">
+        <mat-grid-list cols="1" rowHeight="20:1">
             
             <mat-grid-tile>Name :{{staffInfo.name}}</mat-grid-tile>
             <mat-grid-tile>Email Id: {{staffInfo.email}}</mat-grid-tile>
-            
+           
           </mat-grid-list>
-    
+     
  </div>
 </div>
 </div>
 
-<mat-form-field appearance="fill">
+<mat-form-field class="drop" appearance="fill">
     <mat-label>Attendance</mat-label>
     <mat-select [(value)]="selected" [(ngModel)]="selected">
       <mat-option>None</mat-option>
-      <mat-option *ngFor="let s of schoolList" [value]="s.name" >
-        {{s.name}} {{s.location}}
+      <mat-option  class="drop-content" *ngFor="let a of attendanceDetails" [value]="a.aname" >
+        {{a.std1}} {{a.std2}} {{a.std3}} {{a.std4}} {{a.std5}} {{a.std6}} {{a.std7}} {{a.std8}} {{a.std9}} {{a.std10}} {{a.std11}} {{a.std12}}  
         </mat-option>
       
     </mat-select>
   </mat-form-field>
-  <mat-form-field appearance="fill">
+  <mat-form-field class="drop" appearance="fill">
     <mat-label>Student Details</mat-label>
     <mat-select [(value)]="selected" [(ngModel)]="selected">
       <mat-option>None</mat-option>
-      <mat-option *ngFor="let s of schoolList" [value]="s.name" >
-        {{s.name}} {{s.location}}
+      <mat-option  class="drop-content" *ngFor="let a of attendanceDetails" [value]="a.aname" >
+        {{a.std1}} {{a.std2}} {{a.std3}} {{a.std4}} {{a.std5}} {{a.std6}} {{a.std7}} {{a.std8}} {{a.std9}} {{a.std10}} {{a.std11}} {{a.std12}} 
         </mat-option>
       
     </mat-select>
   </mat-form-field>
-  
-  
+
+</body>
   <!-- Copyright 2019 Google Inc. All Rights Reserved.
       Use of this source code is governed by an MIT-style license that
       can be found in the LICENSE file at http://angular.io/license -->

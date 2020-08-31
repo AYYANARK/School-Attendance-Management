@@ -1,3 +1,50 @@
 .example-card {
-    max-width: 400px;
+    max-width: 100%;
+    background-color: rgb(239, 244, 248);
   }
+  h1{box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+text-align: center;
+padding: 25px;color:white;
+text-shadow: 2px 2px 5px black;
+font-size: 30px;font-family: "Times New Roman", Times, serif;
+background-color:rgb(45, 145, 140);
+  }
+  body{
+    background-color:  rgb(239, 244, 248);margin:5px 40px;
+  }
+  p{
+    padding: 10px;
+    font-size: 20px;
+    color:blue;font-family: "Times New Roman", Times, serif;
+  }
+  .drop{
+    
+    padding: 10px;margin:10px;
+    opacity: 0.5;
+  }
+  .drop:hover{
+    opacity: 1;
+  }
+  .drop-content {
+    background-color: #f9f9f9;
+  }
+  .drop-content:hover {background-color:lightgrey}
+  button{
+    background-color:rgb(138, 180, 138);
+margin:10px;
+    padding: 10px;
+    color:indigo;font-family: "Times New Roman", Times, serif;
+  }
+  button:hover{ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color:rgb(6, 110, 70);
+  }
+  .details{
+    color:green;font-style: unset;font-size: 40px;
+    margin:10px;
+    padding: 10px;font-family: "Times New Roman", Times, serif;
+  }
+  mat-grid-tile {
+  font-size: 18px;font-family: "Times New Roman", Times, serif;
+    color: rgb(63, 59, 66);
+  }
+  
