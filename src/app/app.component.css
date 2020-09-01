@@ -1,6 +1,7 @@
 .example-card {
-    max-width: 100%;
+    max-width: 75%;
     background-color: rgb(239, 244, 248);
+    margin-left: 100px;
   }
   h1{box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 text-align: center;
@@ -10,7 +11,7 @@ font-size: 30px;font-family: "Times New Roman", Times, serif;
 background-color:rgb(45, 145, 140);
   }
   body{
-    background-color:  rgb(239, 244, 248);margin:5px 40px;
+    background-color:  rgb(239, 244, 248);margin:5px 170px;
   }
   p{
     padding: 10px;
@@ -31,20 +32,19 @@ background-color:rgb(45, 145, 140);
   .drop-content:hover {background-color:lightgrey}
   button{
     background-color:rgb(138, 180, 138);
-margin:10px;
-    padding: 10px;
+    font-size: 15px;
+    margin:20px;
+    padding-top: 25px;padding-bottom: 13px;
+    padding-right: 25px;padding-left: 25px;
     color:indigo;font-family: "Times New Roman", Times, serif;
   }
-  button:hover{ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  button:hover{ 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color:rgb(6, 110, 70);
   }
   .details{
-    color:green;font-style: unset;font-size: 40px;
-    margin:10px;
-    padding: 10px;font-family: "Times New Roman", Times, serif;
-  }
-  mat-grid-tile {
   font-size: 18px;font-family: "Times New Roman", Times, serif;
-    color: rgb(63, 59, 66);
+    color: rgb(63, 59, 66);font-style: unset;margin:10px;
+    padding: 10px;
   }
   

@@ -3,9 +3,9 @@
 <body>
 
 <h1>{{title}}</h1>
-<mat-form-field style="margin-left: 50px;"class="drop" appearance="fill">
+<mat-form-field class="drop" appearance="fill">
     <mat-label >Select an option</mat-label>
-    <mat-select  [(value)]="selected" [(ngModel)]="selected">
+    <mat-select  [(value)]="schoolSelected" [(ngModel)]="schoolSelected">
       <mat-option>None</mat-option>
       <mat-option  class="drop-content"*ngFor="let s of schoolList" [value]="s.name" >
         {{s.name}} {{s.location}}
@@ -16,74 +16,111 @@
 
  <p>Selected School name:{{selected}}</p>
  <div *ngFor="let schoolInfo of schoolDetails">
- <div *ngIf="selected==schoolInfo.name">
+ <div *ngIf="schoolSelected==schoolInfo.name">
  <mat-card class="example-card mat-elevation-z8">
-    <mat-card-header>
-      
-      <mat-card-title class="details">School Details</mat-card-title>
-      
-    </mat-card-header>
-    
-    
-    <mat-card-content >
-        <mat-grid-list  cols="5" rowHeight="30px" [colspan]="1">
-            <b>
-            <mat-grid-tile [colspan]="4"  > {{schoolInfo.name}}</mat-grid-tile></b>
-            <mat-grid-tile style="font-style:italic;">Email:{{schoolInfo.email}}</mat-grid-tile>
-            <mat-grid-tile [colspan]="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{schoolInfo.address}}</mat-grid-tile>
-            <mat-grid-tile style="font-style:oblique;">Phone:{{schoolInfo.phone}}</mat-grid-tile>
-            <mat-grid-tile [colspan]="4" >&nbsp;{{schoolInfo.city}} , {{schoolInfo.state}}</mat-grid-tile>
-            <mat-grid-tile [colspan]="1"></mat-grid-tile>    
-            <b><mat-grid-tile [colspan]="1">&nbsp;&nbsp;Principal:{{schoolInfo.pname}}</mat-grid-tile></b>
-            <mat-grid-tile [colspan]="4"></mat-grid-tile> 
-            <mat-grid-tile [colspan]="1" style="font-style:italic;">{{schoolInfo.pgmail}}</mat-grid-tile>   
-            <mat-grid-tile [colspan]="4"></mat-grid-tile> 
-            <mat-grid-tile [colspan]="1" style="font-style:oblique;"> {{schoolInfo.pmobile}}</mat-grid-tile>
+    <mat-card-content class="details">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            One of three columns
+          </div>
+          <div class="col-sm">
+            One of three columns
+          </div>
+          <div class="col-sm">
+            One of three columns
+          </div>
+        </div>
+      </div>
+        <div class="row">
+          
+            
+        
+      <div class="col-md-9 border">
+            <b><div> {{schoolInfo.name}}</div></b>
+            
+            <div > {{schoolInfo.address}}</div>
            
-          </mat-grid-list>
+            <div>{{schoolInfo.city}} , {{schoolInfo.state}}</div></div>
+            <div class="col-md-3 border"></div>
+            <div style="font-style:italic;">Email:{{schoolInfo.email}}</div>
+            <div style="font-style:oblique;">Phone:{{schoolInfo.phone}}</div></div>
+            <b><div >Principal:{{schoolInfo.pname}}</div></b>
+            <div  style="font-style:italic;">{{schoolInfo.pgmail}}</div>  
+             
+            <div style="font-style:oblique;"> {{schoolInfo.pmobile}}</div>
+           
     </mat-card-content>
 
     
   </mat-card>
  </div>
 </div>
-<button mat-button color="primary"  (click)="staffDetails(selected)">School Staff Details</button>
-<div *ngIf="showStaffs">
-<div *ngFor="let staffInfo of staffTestDetails">
-<div *ngIf="selected==staffInfo.sName">
-
-        <mat-grid-list cols="1" rowHeight="20:1">
-            
-            <mat-grid-tile>Name :{{staffInfo.name}}</mat-grid-tile>
-            <mat-grid-tile>Email Id: {{staffInfo.email}}</mat-grid-tile>
-           
-          </mat-grid-list>
-     
- </div>
-</div>
-</div>
 
 <mat-form-field class="drop" appearance="fill">
     <mat-label>Attendance</mat-label>
-    <mat-select [(value)]="selected" [(ngModel)]="selected">
-      <mat-option>None</mat-option>
-      <mat-option  class="drop-content" *ngFor="let a of attendanceDetails" [value]="a.aname" >
-        {{a.std1}} {{a.std2}} {{a.std3}} {{a.std4}} {{a.std5}} {{a.std6}} {{a.std7}} {{a.std8}} {{a.std9}} {{a.std10}} {{a.std11}} {{a.std12}}  
-        </mat-option>
+    <mat-select [(value)]="attendanceSelected" [(ngModel)]="attendanceSelected">
+      <mat-option>Select class</mat-option>
+      <ng-container *ngFor="let s of attendanceDetails">
+        <mat-option *ngIf="schoolSelected==s.aname" [value]="s.std" >
+          {{s.std}}
+          </mat-option>
+        </ng-container>  
+        
+      </mat-select>
       
-    </mat-select>
-  </mat-form-field>
+    </mat-form-field>
+    <ng-container *ngIf="attendanceSelected">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th *ngFor="let head of tableheadAttendance" scope="col">{{head}} </th>
+        </tr>
+      </thead>
+    </table>
+      </ng-container>
+  
+      <table class="table table-striped">
+      <tbody>
+      <ng-container *ngFor="let s of studentdetails">
+        <tr *ngIf="attendanceSelected==s.class && schoolSelected==s.sname">
+          <!-- <td>{{i+1}}</td> -->
+          <td>{{s.rollNo}}</td>
+          <td>{{s.name}}</td>
+          <td>{{s.tnwd}}</td>
+          <td>{{s.dp}}</td>
+          <td>{{s.da}}</td>
+          <td>{{s.remark}}</td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+      
   <mat-form-field class="drop" appearance="fill">
     <mat-label>Student Details</mat-label>
-    <mat-select [(value)]="selected" [(ngModel)]="selected">
-      <mat-option>None</mat-option>
+    <mat-select [(value)]="schoolSelected" [(ngModel)]="schoolSelected">
+      <mat-option>Select class</mat-option>
       <mat-option  class="drop-content" *ngFor="let a of attendanceDetails" [value]="a.aname" >
         {{a.std1}} {{a.std2}} {{a.std3}} {{a.std4}} {{a.std5}} {{a.std6}} {{a.std7}} {{a.std8}} {{a.std9}} {{a.std10}} {{a.std11}} {{a.std12}} 
         </mat-option>
-      
     </mat-select>
   </mat-form-field>
-
+  <button mat-button color="primary"  (click)="staffDetails(schoolSelected)">School Staff Details</button>
+  <div *ngIf="showStaffs">
+  <div *ngFor="let staffInfo of staffTestDetails">
+  <div *ngIf="schoolSelected==staffInfo.sName">
+  
+          <mat-grid-list cols="1" rowHeight="20:1">
+              
+              <mat-grid-tile>Name :{{staffInfo.name}}</mat-grid-tile>
+              <mat-grid-tile>Email Id: {{staffInfo.email}}</mat-grid-tile>
+             
+            </mat-grid-list>
+       
+   </div>
+  </div>
+  </div>
+  
 </body>
   <!-- Copyright 2019 Google Inc. All Rights Reserved.
       Use of this source code is governed by an MIT-style license that
