@@ -1,0 +1,21 @@
+<h1>{{schoolOpt}}Staff Details</h1>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th *ngFor="let head of staffTableColumn " scope="col">{{head}} </th>
+      </tr>
+    </thead>
+  
+  <tbody>
+    <ng-container *ngFor="let s of staffDetails">
+      <tr *ngIf="s.sName==schoolOpt">
+        
+        <td>{{s.name}}</td>
+        <td>{{s.classIncharge}}</td>
+        <td>{{s.email}}</td>
+        <td>{{s.mobile}}</td>
+      
+      </tr>
+    </ng-container>
+    </tbody>
+    </table>

@@ -4,7 +4,7 @@
 
 <h1>{{title}}</h1>
 <mat-form-field class="drop" appearance="fill">
-    <mat-label >Select an option</mat-label>
+    <mat-label >Select the school </mat-label>
     <mat-select  [(value)]="schoolSelected" [(ngModel)]="schoolSelected">
       <mat-option  class="drop-content"*ngFor="let s of schoolList" [value]="s.name" >
         {{s.name}} {{s.location}}
@@ -17,6 +17,7 @@
  <div *ngFor="let schoolInfo of schoolDetails">
  <div *ngIf="schoolSelected==schoolInfo.name">
   <p>Selected School name:{{schoolSelected}}</p>
+  <!-- MAT-CARD BEGINS -->
  <mat-card class="example-card mat-elevation-z8">
     <mat-card-content class="details">
       <div class="container">
@@ -51,10 +52,11 @@
     
   </mat-card>
 
-
+<!-- MATERIAL CARD ENDS -->
+<div>
 <mat-form-field class="drop" appearance="fill">
     <mat-label>Attendance</mat-label>
-    <mat-select [(value)]="attendanceSelected" [(ngModel)]="attendanceSelected">
+    <mat-select  (selectionChange)="onAttendanceChange()" [(value)]="attendanceSelected" [(ngModel)]="attendanceSelected">
       <mat-option>Select class</mat-option>
       <ng-container *ngFor="let s of attendanceDetails">
         <mat-option *ngIf="schoolSelected==s.aname" [value]="s.std" >
@@ -65,9 +67,11 @@
       </mat-select>
       
     </mat-form-field>
+   
+
     <mat-form-field class="drop" appearance="fill">
       <mat-label>Student Details</mat-label>
-      <mat-select [(value)]="studentSelected" [(ngModel)]="studentSelected">
+      <mat-select  (selectionChange)="onStudentChange()" [(value)]="studentSelected" [(ngModel)]="studentSelected">
         <mat-option>Select class</mat-option>
           <ng-container *ngFor="let s of studentDetails">
             <mat-option *ngIf="schoolSelected==s.aname" [value]="s.std" >
@@ -76,77 +80,20 @@
             </ng-container>  
             
           </mat-select>
-          
-        </mat-form-field>
-    <ng-container *ngIf="attendanceSelected">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th *ngFor="let head of tableheadAttendance" scope="col">{{head}} </th>
-        </tr>
-      </thead>
-    </table>
-      </ng-container>
-  
-      <table class="table table-striped">
-      <tbody>
-      <ng-container *ngFor="let s of studentdetails">
-        <tr *ngIf="attendanceSelected==s.class && schoolSelected==s.sname">
-          <!-- <td>{{i+1}}</td> -->
-          <td>{{s.rollNo}}</td>
-          <td>{{s.name}}</td>
-          <td>{{s.tnwd}}</td>
-          <td>{{s.dp}}</td>
-          <td>{{s.da}}</td>
-          <td>{{s.remark}}</td>
-        </tr>
-      </ng-container>
-      </tbody>
-    </table>
-      
-    <ng-container *ngIf="studentSelected">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th *ngFor="let head of tableheadStudent" scope="col">{{head}} </th>
-          </tr>
-        </thead>
-      </table>
-        </ng-container>
-    
-        <table class="table table-striped">
-        <tbody>
-        <ng-container *ngFor="let s of studentdetails">
-          <tr *ngIf="studentSelected==s.class && schoolSelected==s.sname">
-            <!-- <td>{{i+1}}</td> -->
-            <td>{{s.rollNo}}</td>
-            <td>{{s.name}}</td>
-            <td>{{s.dob}}</td>
-            <td>{{s.blood}}</td>
-            <td>{{s.contactNum}}</td>
-            <td>{{s.address}}</td>
-            
-          </tr>
-        </ng-container>
-        </tbody>
-      </table>
-  <button mat-button color="primary"  (click)="staffDetails(schoolSelected)">School Staff Details</button>
-  <div *ngIf="showStaffs">
-  <div *ngFor="let staffInfo of staffTestDetails">
-  <div *ngIf="schoolSelected==staffInfo.sName">
-  
-          <mat-grid-list style="background-color:  rgb(239, 244, 248);color: rgb(114, 66, 104);padding: 10px 50px;"cols="2" rowHeight="20:1">
-            
-              <div style="font-size:27px">Name :{{staffInfo.name}}</div>
-            <div style="font-style:italic;font-size:20px;">Email Id: {{staffInfo.email}}</div>
-            <div style="font-style:oblique;font-size:20px;">Contact: {{staffInfo.mobile}}</div>
-              
-             
-            </mat-grid-list>
-       
-   </div>
-  </div>
-  </div>
+    </mat-form-field>
+       <button mat-button color="primary" (click)="staffDetails(schoolSelected)">School Staff Details</button>
+      </div>
+
+  <p *ngIf="attendanceSelected && flagAttendance==true">
+    <app-attendance-table [staffInfo]="staffTestDetails" [stuDetails]="studentdetails" [attendanceColumn]="tableheadAttendance" [schoolOpt]="schoolSelected" [attendanceOpt]="attendanceSelected"></app-attendance-table>
+  </p>
+  <p *ngIf="studentSelected && flagStudent==true">
+    <app-student-detail-table [staffInfo]="staffTestDetails" [stuDetails]="studentdetails" [studentTableColumn]="tableheadStudent" [schoolOpt]="schoolSelected" [studentOpt]="studentSelected"></app-student-detail-table>
+  </p>
+  <p *ngIf="flagStaff==true">
+    <app-staff-detail-table [staffDetails]="staffTestDetails" [staffTableColumn]="tableheadStaffDetails" [schoolOpt]="schoolSelected"></app-staff-detail-table>
+  </p>
+ 
 </div>
 </div>
 </body>
