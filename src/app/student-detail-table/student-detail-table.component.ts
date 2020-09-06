@@ -16,6 +16,7 @@ export class StudentDetailTableComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.stuDetails);
     
+    
   }
 
 }

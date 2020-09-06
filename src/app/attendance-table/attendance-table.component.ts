@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,ViewChild,ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-attendance-table',
@@ -11,6 +11,7 @@ export class AttendanceTableComponent implements OnInit {
    @Input() schoolOpt:any;
    @Input() attendanceOpt:any;
    @Input() staffInfo:any;
+  needPrint: any;
   constructor() { }
 
   ngOnInit(): void {
@@ -20,5 +21,19 @@ export class AttendanceTableComponent implements OnInit {
     console.log(this.attendanceOpt);
     
   }
+
+  // printPage(attendancePrint){
+
+  //   @ViewChild('attendancePrint') needPrint:ElementRef;
+  //   // let myContainer = document.getElementById('attendancePrint') as HTMLInputElement;
+  //   // let original = myContainer.body.innerHTML;
+  //   // myContainer.body.innerHTML=myContainer;
+     
+  //   //   document.body.innerHTML = original;
+  //   nativeElement.innerHTML=this.needPrint;
+    
+  //     window.print();
+    
+  // }
 
 }

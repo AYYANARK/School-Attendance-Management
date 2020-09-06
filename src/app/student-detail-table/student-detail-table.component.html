@@ -1,4 +1,5 @@
-<h1>Student Details of {{studentOpt}}</h1>
+<div #printThis>
+  <h1>Student Details of {{studentOpt}}</h1>
 <ng-container *ngFor="let s of staffInfo">
 <div *ngIf="s.sName==schoolOpt && s.classIncharge==studentOpt">
 
@@ -29,3 +30,5 @@
     </ng-container>
     </tbody>
     </table>
+  </div>
+    <button class="btn btn-primary"  type="submit" [elementToPrint]="printThis" ngPrint>Print</button>

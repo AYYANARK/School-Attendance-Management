@@ -1,0 +1,104 @@
+
+
+<body>
+
+    <h1>{{title}}</h1>
+    <mat-form-field class="drop" appearance="fill">
+        <mat-label >Select the school </mat-label>
+        <mat-select  [(value)]="schoolSelected" [(ngModel)]="schoolSelected">
+          <mat-option  class="drop-content"*ngFor="let s of schoolList" [value]="s.name" >
+            {{s.name}} {{s.location}}
+            </mat-option>
+          
+        </mat-select>
+      </mat-form-field>
+    
+    
+     <div *ngFor="let schoolInfo of schoolDetails">
+     <div *ngIf="schoolSelected==schoolInfo.name">
+      <p>Selected School name:{{schoolSelected}}</p>
+      <!-- MAT-CARD BEGINS -->
+     <mat-card class="example-card mat-elevation-z8">
+        <mat-card-content class="details">
+          <div class="container">
+            <div class="row">
+              
+              <div class="col-sm-12" style="text-align: center;">
+                <b><div> {{schoolInfo.name}}</div></b>
+                
+                <div > {{schoolInfo.address}}</div>
+               
+                <div>{{schoolInfo.city}} , {{schoolInfo.state}}</div>
+              </div>
+              <div class="col-sm-12" style="text-align: right;">
+                <div style="font-style:italic;">Email:{{schoolInfo.email}}</div>
+                <div style="font-style:oblique;">Phone:{{schoolInfo.phone}}</div>
+              </div>
+              <div class="col-sm-12" style="text-align: left;">
+                <b><div >Headmaster:{{schoolInfo.pname}}</div></b>
+                <div  style="font-style:italic;">{{schoolInfo.pgmail}}</div>  
+                 
+                <div style="font-style:oblique;"> {{schoolInfo.pmobile}}</div>
+              </div>
+            </div>
+          </div>
+           
+                
+                
+                
+               
+        </mat-card-content>
+    
+        
+      </mat-card>
+    
+    <!-- MATERIAL CARD ENDS -->
+    <div>
+    <mat-form-field class="drop" appearance="fill">
+        <mat-label>Attendance</mat-label>
+        <mat-select  (selectionChange)="onAttendanceChange()" [(value)]="attendanceSelected" [(ngModel)]="attendanceSelected">
+          <mat-option>Select class</mat-option>
+          <ng-container *ngFor="let s of attendanceDetails">
+            <mat-option *ngIf="schoolSelected==s.aname" [value]="s.std" >
+              {{s.std}}
+              </mat-option>
+            </ng-container>  
+            
+          </mat-select>
+          
+        </mat-form-field>
+       
+    
+        <mat-form-field class="drop" appearance="fill">
+          <mat-label>Student Details</mat-label>
+          <mat-select  (selectionChange)="onStudentChange()" [(value)]="studentSelected" [(ngModel)]="studentSelected">
+            <mat-option>Select class</mat-option>
+              <ng-container *ngFor="let s of studentDetails">
+                <mat-option *ngIf="schoolSelected==s.aname" [value]="s.std" >
+                  {{s.std}}
+                  </mat-option>
+                </ng-container>  
+                
+              </mat-select>
+        </mat-form-field>
+           <button mat-button color="primary" (click)="staffDetails(schoolSelected)">School Staff Details</button>
+          </div>
+    
+      <p *ngIf="attendanceSelected && flagAttendance==true">
+        <app-attendance-table [staffInfo]="staffTestDetails" [stuDetails]="studentdetails" [attendanceColumn]="tableheadAttendance" [schoolOpt]="schoolSelected" [attendanceOpt]="attendanceSelected"></app-attendance-table>
+      </p>
+      <p *ngIf="studentSelected && flagStudent==true">
+        <app-student-detail-table [staffInfo]="staffTestDetails" [stuDetails]="studentdetails" [studentTableColumn]="tableheadStudent" [schoolOpt]="schoolSelected" [studentOpt]="studentSelected"></app-student-detail-table>
+      </p>
+      <p *ngIf="flagStaff==true">
+        <app-staff-detail-table [staffDetails]="staffTestDetails" [staffTableColumn]="tableheadStaffDetails" [schoolOpt]="schoolSelected"></app-staff-detail-table>
+      </p>
+     
+    </div>
+    </div>
+    </body>
+      <!-- Copyright 2019 Google Inc. All Rights Reserved.
+          Use of this source code is governed by an MIT-style license that
+          can be found in the LICENSE file at http://angular.io/license -->
+      
+    
