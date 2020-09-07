@@ -4,8 +4,8 @@
 <div *ngIf="s.sName==schoolOpt && s.classIncharge==studentOpt">
 
 <p>Staff Incharge:{{s.name}}</p>
-   <p> Staff Contact Number:{{s.mobile}}</p>
-   <p> Staff Email-ID:{{s.email}}
+   <p> Staff Contact Number:<i>{{s.mobile}}</i></p>
+   <p> Staff Email-ID:<i>{{s.email}}</i>
 </p>
 </div>
 </ng-container>
@@ -31,4 +31,4 @@
     </tbody>
     </table>
   </div>
-    <button class="btn btn-primary"  type="submit" [elementToPrint]="printThis" ngPrint>Print</button>
+  <center>  <button class="btn btn-primary"  type="submit" [elementToPrint]="printThis" ngPrint>Print</button></center>

@@ -54,7 +54,7 @@
     
     <!-- MATERIAL CARD ENDS -->
     <div>
-    <mat-form-field class="drop" appearance="fill">
+    <mat-form-field class="drop" style="margin-left:90px" appearance="fill">
         <mat-label>Attendance</mat-label>
         <mat-select  (selectionChange)="onAttendanceChange()" [(value)]="attendanceSelected" [(ngModel)]="attendanceSelected">
           <mat-option>Select class</mat-option>
@@ -69,7 +69,7 @@
         </mat-form-field>
        
     
-        <mat-form-field class="drop" appearance="fill">
+        <mat-form-field class="drop" style="margin-left:50px" appearance="fill">
           <mat-label>Student Details</mat-label>
           <mat-select  (selectionChange)="onStudentChange()" [(value)]="studentSelected" [(ngModel)]="studentSelected">
             <mat-option>Select class</mat-option>
