@@ -1,7 +1,7 @@
 <div #printThis>
   <h1>Student Details of {{studentOpt}}</h1>
 <ng-container *ngFor="let s of staffInfo">
-<div *ngIf="s.sName==schoolOpt && s.classIncharge==studentOpt">
+<div *ngIf="s.sname==schoolOpt && s.classIncharge==studentOpt">
 
 <p>Staff Incharge:{{s.name}}</p>
    <p> Staff Contact Number:<i>{{s.mobile}}</i></p>
@@ -17,10 +17,10 @@
     </thead>
   
   <tbody>
-    <ng-container *ngFor="let s of stuDetails">
+    <ng-container *ngFor="let s of stuDetail">
       <tr *ngIf="studentOpt==s.class && schoolOpt==s.sname">
         
-        <td>{{s.rollNo}}</td>
+        <td>{{s.rollno}}</td>
         <td>{{s.name}}</td>
         <td>{{s.dob}}</td>
         <td>{{s.blood}}</td>

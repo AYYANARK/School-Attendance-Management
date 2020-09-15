@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="row">
 <button mat-button color="primary" (click)="officerLogin()">OFFICER LOGIN</button>
 <button mat-button color="primary" (click)="staffLogin()">STAFF LOGIN</button></div>
@@ -8,4 +8,71 @@
 </p>
 <p *ngIf="officerFlag==true">
  <app-officer-login> </app-officer-login>
+</p> -->
+
+
+
+<p *ngIf="flagMainLoginPage==true">
+<div  style="background-color:  rgb(239, 244, 248);margin:5px 170px;">
+<!-- <title>LIFI ATTENDANCE MANAGEMENT WEBSITE</title> -->
+
+
+<body>						
+<h2 class="head">
+LIFI ATTENDANCE MANAGEMENT
+    <marquee direction="left" style="background-color:#cac3c36b;border-radius:20px;padding-left:30%;color:#FFF;margin-top:4px;margin-left:20px;" width="45%"height="5%" >
+		<b style="color:#FF0;font-size:14px">:) :) </b>
+		<i style="font-family: Times New Roman, Times, serif; font-size: 20px;color:black;"> "Easy Attendance Management!!!" </i>
+	</marquee>
+</h2>
+
+<br>
+<br>
+<br>
+<body>
+<form>
+<table align="center" class="tab1"  width="50%">
+<tr>
+<th colspan="2">Login to getin!!
+</th></tr>
+<tr>
+<td>Username
+</td>
+<td>
+<input type="text" name="uname" placeholder="Enter your Username" required style="border-radius:8px;height:25px;" width="70px"  [(ngModel)]="uname">
+</td>
+</tr>
+<tr>
+<td>Password
+</td>
+<td>
+<input type="password" name="pwd" placeholder="Enter password" required style="border-radius:8px;height:25px;" width="70px" [(ngModel)]="pwd">
+</td>
+</tr>
+<tr>
+
+<td colspan="2" align="right">
+<input type="submit" class="sample" (click)="loginSubmit()" value="Login" name="log">
+
+</td>
+</tr>
+</table>
+</form>
+</body>
+</body>
+</div>
+</p>
+<!-- {{loggedData['username']}} -->
+<ng-container *ngIf="loggedData['username'] !='nil'">
+	<p *ngIf="loggedData['code'] == 'school'">
+		
+		{{displayTop()}}
+	<app-staff-login></app-staff-login>
+	
+</p>
+</ng-container>
+<p *ngIf="loggedData['username'] !='nil'">
+	<p *ngIf="loggedData['code'] == 'department'">
+	<app-officer-login> </app-officer-login>
+	
 </p>

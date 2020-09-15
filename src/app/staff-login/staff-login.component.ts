@@ -1,5 +1,8 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { TranslationWidth } from '@angular/common';
+import {AppService} from '../app.service';
+import {FormBuilder,FormGroup} from '@angular/forms';
+import {Attendance} from '../attendence';
 
 @Component({
   selector: 'app-staff-login',
@@ -21,11 +24,41 @@ export class StaffLoginComponent implements OnInit {
   _attendance=[];
   _student=[];
   _staff=[];
-
-  constructor() { }
+  attenForm:FormGroup;
+  stuDetailForm:FormGroup;
+  staffDetailForm:FormGroup;
+  attenDetail:Attendance[];
+  
+  constructor(private formBuider:FormBuilder , private _appService :AppService) { }
 
   ngOnInit(): void {
+    this.attenForm =this.formBuider.group({
+      rno:[],
+      name:[],
+      twd:[],
+      dp:[],
+      da:[],
+      remark:[]
+
+    });
+    this.stuDetailForm=this.formBuider.group({
+      stuRno:[],
+      stuName:[],
+      dob:[],
+      blood:[],
+      phone:[],
+      address:[]
+});
+
+this.staffDetailForm=this.formBuider.group({
+
+  staffName:[],
+  incharge:[],
+  email1:[],
+  phone:[]
+});
     
+
   }
 
   attendanceClicked(){
@@ -44,17 +77,34 @@ staffClicked(){
   this.flagStaffbtn=true;
   this.flagAttendancebtn=false;
 }
-  attenBtnClick(attenForm){
-    console.log(attenForm.value);
-    // let rollNo = attenForm.controls['rno'].value;
-    // let name = attenForm.controls['name'].value;
-    // let work = attenForm.controls['twd'].value;
-    // let present = attenForm.controls['dp'].value;
-    // let absent = attenForm.controls['da'].value;
-    // let remark = attenForm.controls['remark'].value;
-    // let attendenceObj = {'rollNo':rollNo,'name':name,'work':work,'present':present,'absent':absent,'remark':remark};
-    this._attendance.push(attenForm.value);
-    console.log(this._attendance);
+  attenSubmit(){
+    // console.log(this.attenForm.value);
+     let attendDetails =[];
+    attendDetails.push(this.attenForm.value);
+    // console.log(attendDetails);
+    
+    this._appService.insertAttendance(attendDetails).subscribe((data) =>{
+      console.log(data);
+      
+    });
+
+  }
+
+  stuDetailSubmit(){
+    let studentDetails=[];
+    studentDetails.push(this.stuDetailForm.value);
+    this._appService.insertStuDetail(studentDetails).subscribe((data)=>{
+        // console.log(data);
+    });
+
+  }
+  staffDetailSubmit(){
+    let staffDetails=[];
+    staffDetails.push(this.staffDetailForm.value);
+    this._appService.insertStaffDetail(staffDetails).subscribe((data)=>{
+        // console.log(data);
+    });
+
   }
 
 }

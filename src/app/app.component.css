@@ -1,6 +1,51 @@
-button{
+/* button{
     margin-top:30px ;
     margin-bottom: 20px;
     margin-left:60px ;
     margin-right: 10px;
+} */
+
+
+
+						.head{font-family: Times New Roman, Times, serif;
+							color:white;text-shadow: 2px 2px 5px black;
+background-color:rgb(45, 145, 140);
+	padding-bottom:20px;
+	padding-left:10px;
+	padding-right:0px;padding-top:20px;
+	box-shadow:3px 3px 5px rgba(0, 0, 0, 0.19) ;
 }
+						.tab1 {
+  
+							font-family: Times New Roman, Times, serif; font-size: 20px;border-collapse: collapse;border-right:20px solid #003333;
+					 border-left:20px solid #003333;
+					 border-top:20px solid #003333;border-bottom:20px solid #003333;box-shadow:5px 5px 5px grey ;
+						}
+						
+					 .tab1 th{ 
+							background-color:lightgrey;font-size: 25px; padding-top: 12px; 
+	padding-left: 12px;padding-right: 12px;padding-bottom: 12px;color:blue;border:1px solid #aa80ff;
+					 }
+					 .tab1 td{
+						 padding-top: 12px; 
+	padding-left: 12px;padding-right: 12px;padding-bottom: 12px;
+					 }
+					 .sample{
+  background-color: #ff6666;
+  color: white;
+  padding: 4px 12px;
+  text-align: center;
+  
+}
+
+
+.sample:hover{	
+  background-color: green;
+}	
+.bo{
+	
+    background-color:  rgb(239, 244, 248);margin:5px 170px;
+	
+}
+	
+						

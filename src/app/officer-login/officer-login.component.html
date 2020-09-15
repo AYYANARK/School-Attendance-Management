@@ -6,7 +6,7 @@
     <mat-form-field class="drop" appearance="fill">
         <mat-label >Select the school </mat-label>
         <mat-select  [(value)]="schoolSelected" [(ngModel)]="schoolSelected">
-          <mat-option  class="drop-content"*ngFor="let s of schoolList" [value]="s.name" >
+          <mat-option  class="drop-content"*ngFor="let s of schoolDropDown" [value]="s.name" >
             {{s.name}} {{s.location}}
             </mat-option>
           
@@ -14,7 +14,7 @@
       </mat-form-field>
     
     
-     <div *ngFor="let schoolInfo of schoolDetails">
+     <div *ngFor="let schoolInfo of schoolInformation">
      <div *ngIf="schoolSelected==schoolInfo.name">
       <p>Selected School name:{{schoolSelected}}</p>
       <!-- MAT-CARD BEGINS -->
@@ -58,7 +58,7 @@
         <mat-label>Attendance</mat-label>
         <mat-select  (selectionChange)="onAttendanceChange()" [(value)]="attendanceSelected" [(ngModel)]="attendanceSelected">
           <mat-option>Select class</mat-option>
-          <ng-container *ngFor="let s of attendanceDetails">
+          <ng-container *ngFor="let s of classDropDown">
             <mat-option *ngIf="schoolSelected==s.aname" [value]="s.std" >
               {{s.std}}
               </mat-option>
@@ -73,7 +73,7 @@
           <mat-label>Student Details</mat-label>
           <mat-select  (selectionChange)="onStudentChange()" [(value)]="studentSelected" [(ngModel)]="studentSelected">
             <mat-option>Select class</mat-option>
-              <ng-container *ngFor="let s of studentDetails">
+              <ng-container *ngFor="let s of classDropDown">
                 <mat-option *ngIf="schoolSelected==s.aname" [value]="s.std" >
                   {{s.std}}
                   </mat-option>

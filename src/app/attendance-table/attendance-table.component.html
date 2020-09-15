@@ -5,7 +5,8 @@
 <b><h1>{{schoolOpt}}</h1></b>
 <h1>Attendance of {{attendanceOpt}}</h1>
 <ng-container *ngFor="let s of staffInfo">
-<div *ngIf="s.sName==schoolOpt && s.classIncharge==attendanceOpt">
+
+<div *ngIf="s.sname==schoolOpt && s.classIncharge==attendanceOpt">
 
 <p>Staff Incharge:{{s.name}}</p>
    <p> Staff Contact Number:<i>{{s.mobile}}</i></p>
@@ -23,10 +24,10 @@
     </thead>
   
   <tbody>
-    <ng-container *ngFor="let s of stuDetails">
+    <ng-container *ngFor="let s of attendance">
       <tr *ngIf="attendanceOpt==s.class && schoolOpt==s.sname">
         
-        <td>{{s.rollNo}}</td>
+        <td>{{s.rollno}}</td>
         <td>{{s.name}}</td>
         <td>{{s.tnwd}}</td>
         <td>{{s.dp}}</td>

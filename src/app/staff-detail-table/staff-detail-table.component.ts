@@ -1,4 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
+import {AppService} from '../app.service';
 
 @Component({
   selector: 'app-staff-detail-table',
@@ -6,17 +7,22 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./staff-detail-table.component.css']
 })
 export class StaffDetailTableComponent implements OnInit {
-  @Input() staffDetails:any;
+  // @Input() staffDetails:any;
   @Input() staffTableColumn:any;
   @Input() schoolOpt:any;
-  
+  staffInfo:any;
   
 
-  constructor() { }
+  constructor(private _appService :AppService) { }
 
   ngOnInit(): void {
-    console.log(this.staffDetails);
-    console.log(this.schoolOpt);
+    // console.log(this.staffDetails);
+    // console.log(this.schoolOpt);
+    this._appService.getStaffDetails().subscribe((data)=>{
+     this.staffInfo=data;
+      console.log(this.staffInfo);
+
+    });
   }
 
 }
