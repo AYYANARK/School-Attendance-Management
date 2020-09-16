@@ -59,6 +59,7 @@ export class AppService {
  // console.log(_stafflogin);
        return this.http.post("http://localhost/lifi/insertStaffDetail.php",staffDetail);
      }
+
      logincheck(uname,password){
       //  console.log(uname);
       //  console.log(password);
@@ -68,13 +69,15 @@ export class AppService {
        console.log(login);
        console.log(login[0]);
        console.log(login[1]);
-       
-
        return this.http.post("http://localhost/lifi/logincode.php",login);
 
      }
-     displayInfo(){
-      return this.http.get<any>("http://localhost/lifi/displayTopStaffLogin.php");
+     displayInfo(user1name){
+       console.log(user1name);
+       let username=[];
+       username.push(user1name);
+       console.log(username);
+      return this.http.post("http://localhost/lifi/displayTopStaffLogin.php",username);
      }
      
 

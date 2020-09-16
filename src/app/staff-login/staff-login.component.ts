@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, Input, OnInit,ViewChild } from '@angular/core';
 import { TranslationWidth } from '@angular/common';
 import {AppService} from '../app.service';
 import {FormBuilder,FormGroup} from '@angular/forms';
@@ -10,17 +10,19 @@ import {Attendance} from '../attendence';
   styleUrls: ['./staff-login.component.css']
 })
 export class StaffLoginComponent implements OnInit {
- 
+  @Input() displayTop:any;
+  @Input() loggeddata:any;
+  @Input() classDrop:any;
   classSelected;
   flagAttendancebtn=false;
   flagStudentbtn=false;
   flagStaffbtn=false;
-  attendanceDetails=[{'aname':'Government School','std':'I STANDARD'},{'aname':'Government School','std':'II STANDARD'},{'aname':'Government School','std':'III STANDARD'},{'aname':'Government School','std':'IV STANDARD'},{'aname':'Government School','std':'V STANDARD'}
-  ,{'aname':'Government School','std':'VI STANDARD'},{'aname':'Government School','std':'VII STANDARD'},
-  {'aname':'Government School','std':'VIII STANDARD'},{'aname':'Government School','std':'IX STANDARD'},{'aname':'Government School','std':'X STANDARD'},{'aname':'Government School','std':'XI STANDARD'},
-  {'aname':'Government School','std':'XII Standard'},
-  {'aname':'Nellaiyappar School','std':'I STANDARD'},{'aname':'Nellaiyappar School','std':'II STANDARD'},{'aname':'Nellaiyappar School','std':'III STANDARD'},{'aname':'Nellaiyappar School','std':'IV STANDARD'},{'aname':'Nellaiyappar School','std':'V STANDARD'},{'aname':'Nellaiyappar School','std':'VI STANDARD'},
-  {'aname':'Nellaiyappar School','std':'VII STANDARD'},{'aname':'Nellaiyappar School','std':'VIII STANDARD'},{'aname':'Nellaiyappar School','std':'IX STANDARD'},{'aname':'Nellaiyappar School','std':'X STANDARD'}];
+  // attendanceDetails=[{'aname':'Government School','std':'I STANDARD'},{'aname':'Government School','std':'II STANDARD'},{'aname':'Government School','std':'III STANDARD'},{'aname':'Government School','std':'IV STANDARD'},{'aname':'Government School','std':'V STANDARD'}
+  // ,{'aname':'Government School','std':'VI STANDARD'},{'aname':'Government School','std':'VII STANDARD'},
+  // {'aname':'Government School','std':'VIII STANDARD'},{'aname':'Government School','std':'IX STANDARD'},{'aname':'Government School','std':'X STANDARD'},{'aname':'Government School','std':'XI STANDARD'},
+  // {'aname':'Government School','std':'XII Standard'},
+  // {'aname':'Nellaiyappar School','std':'I STANDARD'},{'aname':'Nellaiyappar School','std':'II STANDARD'},{'aname':'Nellaiyappar School','std':'III STANDARD'},{'aname':'Nellaiyappar School','std':'IV STANDARD'},{'aname':'Nellaiyappar School','std':'V STANDARD'},{'aname':'Nellaiyappar School','std':'VI STANDARD'},
+  // {'aname':'Nellaiyappar School','std':'VII STANDARD'},{'aname':'Nellaiyappar School','std':'VIII STANDARD'},{'aname':'Nellaiyappar School','std':'IX STANDARD'},{'aname':'Nellaiyappar School','std':'X STANDARD'}];
   _attendance=[];
   _student=[];
   _staff=[];
@@ -81,7 +83,9 @@ staffClicked(){
     // console.log(this.attenForm.value);
      let attendDetails =[];
     attendDetails.push(this.attenForm.value);
-    // console.log(attendDetails);
+    attendDetails.push(this.classSelected);
+    attendDetails.push(this.displayTop.name);
+    console.log(attendDetails);
     
     this._appService.insertAttendance(attendDetails).subscribe((data) =>{
       console.log(data);
@@ -93,6 +97,8 @@ staffClicked(){
   stuDetailSubmit(){
     let studentDetails=[];
     studentDetails.push(this.stuDetailForm.value);
+    studentDetails.push(this.classSelected);
+    studentDetails.push(this.displayTop.name);
     this._appService.insertStuDetail(studentDetails).subscribe((data)=>{
         // console.log(data);
     });
@@ -101,6 +107,7 @@ staffClicked(){
   staffDetailSubmit(){
     let staffDetails=[];
     staffDetails.push(this.staffDetailForm.value);
+    staffDetails.push(this.displayTop.name);
     this._appService.insertStaffDetail(staffDetails).subscribe((data)=>{
         // console.log(data);
     });

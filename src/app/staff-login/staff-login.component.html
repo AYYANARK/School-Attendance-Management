@@ -1,29 +1,35 @@
 <body>
-<div style="font-size: 20px;" >
+<!-- <div style="font-size: 20px;" >
     <center>
-     <p>School name  </p></center>
-<div style="text-align: right;">
-     <p>School address  </p>
-     <p>School contact </p></div>
-     <p>Headmaster name</p>
-     <p>Headmaster contact</p>
-     <p>Staff Login-ed is:</p>
-</div>
+     <p>{{displayTop.name}}</p></center>
+      <div style="text-align: right;">
+     <p>Address:{{displayTop.address}}</p>
+         <p>City:{{displayTop.city}}</p>
+         <p>State:{{displayTop.state}} </p>
+     <p>Email:{{displayTop.email1}}</p>
+     <p>Phone:{{displayTop.phone}}</p>
+    </div>
+     <p>Headmaster Name:{{displayTop.pname}}</p>
+     <p>Headmaster Email:{{displayTop.pgmail}}</p>
+     <p>Headmaster Phone:{{displayTop.pmobile}}</p>
+     <p>Staff Login-ed is:{{loggedData.name}}</p>
+</div> -->
 
+<div>
 <center>
 <mat-form-field class="drop" appearance="fill">
-    <mat-label >Select Class </mat-label>
+    <mat-label>Select Class </mat-label>
     <mat-select  [(value)]="classSelected" [(ngModel)]="classSelected">
-      <ng-container *ngFor="let s of attendanceDetails">
-          <mat-option *ngIf="s.aname=='Nellaiyappar School'" [value]="s.std">
+      <ng-container *ngFor="let s of classDrop">
+          <mat-option *ngIf="s.aname== displayTop.name" [value]="s.std">
         {{s.std}}
         </mat-option>
         </ng-container>
       
     </mat-select>
   </mat-form-field></center>
-
-<div >
+</div>
+<div>
 <button  class="btn btn-primary" (click)="attendanceClicked()">Attendance</button>
 <button  class="btn btn-primary" (click)="studentClicked()">Student Details</button>
 <button  class="btn btn-primary" (click)="staffClicked()">Staff Details</button></div>

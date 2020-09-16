@@ -1,25 +1,16 @@
-<!-- <div class="container">
-    <div class="row">
-<button mat-button color="primary" (click)="officerLogin()">OFFICER LOGIN</button>
-<button mat-button color="primary" (click)="staffLogin()">STAFF LOGIN</button></div>
-</div>
-<p *ngIf="staffFlag==true">
-<app-staff-login></app-staff-login>
-</p>
-<p *ngIf="officerFlag==true">
- <app-officer-login> </app-officer-login>
-</p> -->
 
 
 
-<p *ngIf="flagMainLoginPage==true">
+
+
 <div  style="background-color:  rgb(239, 244, 248);margin:5px 170px;">
 <!-- <title>LIFI ATTENDANCE MANAGEMENT WEBSITE</title> -->
 
 
-<body>						
+<body>	
+	<p *ngIf="flagMainLoginPage==true">				
 <h2 class="head">
-LIFI ATTENDANCE MANAGEMENT
+LIE-FI ATTENDANCE MANAGEMENT
     <marquee direction="left" style="background-color:#cac3c36b;border-radius:20px;padding-left:30%;color:#FFF;margin-top:4px;margin-left:20px;" width="45%"height="5%" >
 		<b style="color:#FF0;font-size:14px">:) :) </b>
 		<i style="font-family: Times New Roman, Times, serif; font-size: 20px;color:black;"> "Easy Attendance Management!!!" </i>
@@ -58,21 +49,26 @@ LIFI ATTENDANCE MANAGEMENT
 </tr>
 </table>
 </form>
+
 </body>
+<!-- </p> -->
 </body>
+
 </div>
-</p>
+
 <!-- {{loggedData['username']}} -->
-<ng-container *ngIf="loggedData['username'] !='nil'">
-	<p *ngIf="loggedData['code'] == 'school'">
-		
-		{{displayTop()}}
-	<app-staff-login></app-staff-login>
+<ng-container *ngIf="loggedData['username'] !='nil' && loggedData['code'] == 'school'">
 	
-</p>
+		
+	
+	<app-staff-login [displayTop]="display" [loggedData]="loggedData" [classDrop]="classDropDown"></app-staff-login>
+	
+
 </ng-container>
-<p *ngIf="loggedData['username'] !='nil'">
-	<p *ngIf="loggedData['code'] == 'department'">
+<!-- {{loggedData['code']}} -->
+<ng-container *ngIf="loggedData['username'] !='nil' && loggedData['code'] == 'department' ">
+	
 	<app-officer-login> </app-officer-login>
 	
-</p>
+
+</ng-container>
