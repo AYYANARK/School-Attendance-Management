@@ -14,7 +14,8 @@ export class AppComponent {
   loginConfirmation:boolean;
   loggedData:any;
   display:any;
-  flagMainLoginPage=true;
+  flagMainLoginPage: boolean = true;
+  showContainer:boolean;
   classDropDown:any;
 //   officerFlag=false;
 //   staffFlag=false;
@@ -32,20 +33,28 @@ export class AppComponent {
 constructor(private _appService :AppService) { }
 
 displayTop(){
-  this._appService.displayInfo(this.loggedData["username"]).subscribe((data)=>{
- console.log(data);
-  this.display=data;
- console.log(this.display);
+  this._appService.displayInfo(this.loggedData["username"]).subscribe((dataDisplay)=>{
+ console.log(dataDisplay);
+  this.display=dataDisplay;
+ console.log("display",this.display);
+
+ this.getStandard();
+
 
 });
-this._appService.getClassDropDown().subscribe((data)=>{
-  this.classDropDown=data;
-  console.log(this.classDropDown);
-});
+
+}
+
+getStandard() {
+  this._appService.getClassDropDown().subscribe((dataDrop)=>{
+    this.classDropDown=dataDrop;
+    console.log("classDropDown",this.classDropDown);
+  });
 }
 
 loginSubmit(){
    this.flagMainLoginPage=false;
+   this.showContainer=true;
    console.log(this.uname);
    
   this._appService.logincheck(this.uname, this.pwd).subscribe((data) =>{
@@ -54,9 +63,10 @@ loginSubmit(){
     
     console.log(this.loggedData["username"]);
     console.log(this.loggedData["code"]);
+    this.displayTop();
     
   });
-  this.displayTop();
+  
 }
 
 

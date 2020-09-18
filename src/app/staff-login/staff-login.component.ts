@@ -11,7 +11,7 @@ import {Attendance} from '../attendence';
 })
 export class StaffLoginComponent implements OnInit {
   @Input() displayTop:any;
-  @Input() loggeddata:any;
+  @Input() loggedData:any;
   @Input() classDrop:any;
   classSelected;
   flagAttendancebtn=false;
@@ -31,9 +31,13 @@ export class StaffLoginComponent implements OnInit {
   staffDetailForm:FormGroup;
   attenDetail:Attendance[];
   
-  constructor(private formBuider:FormBuilder , private _appService :AppService) { }
+  constructor(private formBuider:FormBuilder , private _appService :AppService) { 
+    console.log("classDrop",this.classDrop);
+  }
 
   ngOnInit(): void {
+    console.log("loggedData",this.loggedData);
+    
     this.attenForm =this.formBuider.group({
       rno:[],
       name:[],

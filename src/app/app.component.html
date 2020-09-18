@@ -1,21 +1,19 @@
 
 
 
+<h2 class="head" >
+	LIE-FI ATTENDANCE MANAGEMENT
+		<marquee direction="left" style="background-color:#cac3c36b;border-radius:20px;padding-left:30%;color:#FFF;margin-top:4px;margin-left:20px;" width="45%"height="5%" >
+			<b style="color:#FF0;font-size:14px">:) :) </b>
+			<i style="font-family: Times New Roman, Times, serif; font-size: 20px;color:black;"> "Easy Attendance Management!!!" </i>
+		</marquee>
+	</h2>
 
-
-<div  style="background-color:  rgb(239, 244, 248);margin:5px 170px;">
+<div  style="background-color:  rgb(239, 244, 248);margin:5px 170px;" *ngIf="flagMainLoginPage">
 <!-- <title>LIFI ATTENDANCE MANAGEMENT WEBSITE</title> -->
+				
 
 
-<body>	
-	<p *ngIf="flagMainLoginPage==true">				
-<h2 class="head">
-LIE-FI ATTENDANCE MANAGEMENT
-    <marquee direction="left" style="background-color:#cac3c36b;border-radius:20px;padding-left:30%;color:#FFF;margin-top:4px;margin-left:20px;" width="45%"height="5%" >
-		<b style="color:#FF0;font-size:14px">:) :) </b>
-		<i style="font-family: Times New Roman, Times, serif; font-size: 20px;color:black;"> "Easy Attendance Management!!!" </i>
-	</marquee>
-</h2>
 
 <br>
 <br>
@@ -51,24 +49,20 @@ LIE-FI ATTENDANCE MANAGEMENT
 </form>
 
 </body>
-<!-- </p> -->
-</body>
 
 </div>
-
-<!-- {{loggedData['username']}} -->
+<div *ngIf="showContainer">
 <ng-container *ngIf="loggedData['username'] !='nil' && loggedData['code'] == 'school'">
-	
 		
-	
+	<div *ngIf="display!=null && classDropDown.length>0">
 	<app-staff-login [displayTop]="display" [loggedData]="loggedData" [classDrop]="classDropDown"></app-staff-login>
-	
+</div>
 
 </ng-container>
-<!-- {{loggedData['code']}} -->
 <ng-container *ngIf="loggedData['username'] !='nil' && loggedData['code'] == 'department' ">
 	
 	<app-officer-login> </app-officer-login>
 	
 
 </ng-container>
+</div>
