@@ -8,6 +8,7 @@ import {AppService} from '../app.service';
 export class OfficerLoginComponent implements OnInit {
    classDropDown:any;
    schoolDropDown:any;
+   //schoolDropDown:any;
    schoolInformation:any;
   constructor(private _appService :AppService) { }
 

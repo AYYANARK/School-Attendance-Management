@@ -19,6 +19,7 @@ export class AppComponent {
   classDropDown:any;
 //   officerFlag=false;
 //   staffFlag=false;
+//just
 // officerLogin(){
 //    this.officerFlag=true;
 //    this.staffFlag=false;

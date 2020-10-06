@@ -8,6 +8,7 @@ import {AppService} from '../app.service';
 })
 export class StaffDetailTableComponent implements OnInit {
   // @Input() staffDetails:any;
+  // @Input() staffDetails:any;
   @Input() staffTableColumn:any;
   @Input() schoolOpt:any;
   staffInfo:any;
