@@ -1,7 +1,7 @@
 
 
 
-<div #printThis>
+<div #printTh>
 <b><h1>{{schoolOpt}}</h1></b>
 <h1>Attendance of {{attendanceOpt}}</h1>
 <ng-container *ngFor="let s of staffInfo">
@@ -39,4 +39,4 @@
     </tbody>
     </table>
 </div>
-   <center> <button class="btn btn-primary"  type="submit" [elementToPrint]="printThis" ngPrint>Print</button></center>
+   <center> <button class="btn btn-primary"  type="submit" [elementToPrint]="printTh" ngPrint>Print</button></center>
